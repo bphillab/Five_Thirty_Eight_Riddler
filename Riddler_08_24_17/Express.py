@@ -3,7 +3,7 @@ from math import floor
 import pandas as pd
 
 number_of_games = 10000
-number_of_players = 31
+number_of_players = 5
 
 
 def convert_random_flip_into_pass(flip):
