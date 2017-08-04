@@ -61,7 +61,7 @@ print(contingency_table)
 
 print("Probability occupied given that the sign says occupied: ")
 print(bathroom_ts[(bathroom_ts.sign==1)&(bathroom_ts.occupation==1)].count().get_values()[0]/bathroom_ts[(bathroom_ts.sign==1)].count().get_values()[0])
-print("Probability vacant given that the sign says occupied: ")
+print("Probability vacant given that the sign says vacant: ")
 print(bathroom_ts[(bathroom_ts.sign==0)&(bathroom_ts.occupation==0)].count().get_values()[0]/bathroom_ts[(bathroom_ts.sign==0)].count().get_values()[0])
 
 
