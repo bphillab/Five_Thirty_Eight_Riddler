@@ -12,4 +12,58 @@ If you go to the bathroom and see that the sign on the door reads “Occupied,�
 If the sign reads “Vacant,” what is the probability that the bathroom actually is vacant?
 Extra credit: What happens as the percentage of conscientious bathroom users changes?
 
+
+Assumption: People will try to occupy regardless of sign status.
 """
+
+
+import pandas as pd
+from numpy.random import uniform
+
+num_runs = 10000
+prob_jerk = 1/3
+prob_idiot = 1/3
+prob_good = 1/3
+
+
+def idiots(sign):
+    return pd.DataFrame([{'kind':'i','sign':sign,'occupation':1},{'kind':'i','sign':sign,'occupation':0}])
+
+
+def jerks(sign):
+    return pd.DataFrame([{'kind':'j','sign':1,'occupation':1},{'kind':'j','sign':1,'occupation':0}])
+
+
+def good(sign):
+    return pd.DataFrame([{'kind':'g','sign':1,'occupation':1},{'kind':'g','sign':0,'occupation':0}])
+
+
+def step(sign):
+    random_number = uniform()
+    if random_number < prob_good:
+        return good(sign)
+    if random_number < prob_good + prob_idiot:
+        return idiots(sign)
+    return jerks(sign)
+
+
+# Bathroom time series is a set of recordings of the bathroom's state and the sign's state
+# Let 0 mean vacant and 1 mean occupied
+bathroom_ts = pd.DataFrame(columns=['kind','sign','occupation'])
+sign = 0
+for i in range(num_runs):
+    bathroom_ts = bathroom_ts.append(step(sign))
+    sign = bathroom_ts.tail(1)['sign'].get_values()[0]
+
+contingency_table = bathroom_ts.groupby(['sign','occupation']).size()
+
+print(contingency_table)
+
+print("Probability occupied given that the sign says occupied: ")
+print(bathroom_ts[(bathroom_ts.sign==1)&(bathroom_ts.occupation==1)].count().get_values()[0]/bathroom_ts[(bathroom_ts.sign==1)].count().get_values()[0])
+print("Probability vacant given that the sign says occupied: ")
+print(bathroom_ts[(bathroom_ts.sign==0)&(bathroom_ts.occupation==0)].count().get_values()[0]/bathroom_ts[(bathroom_ts.sign==0)].count().get_values()[0])
+
+
+
+
