@@ -51,32 +51,32 @@ class game:
             self.player_2.receive_cards([p1,p2])
         if p1 == p2:
             self.war([p1,p2])
-        if self.player_1.lose_check():
-            self.winner = 2
         if self.player_2.lose_check():
             self.winner = 1
+        if self.player_1.lose_check():
+            self.winner = 2
     
     def war(self,cards):
-        tableau = cards + [self.player_1.draw_a_card()] + [self.player_2.draw_a_card()]
+        tableau = cards + [self.player_1.draw_a_card()] + [self.player_2.draw_a_card()]+ [self.player_1.draw_a_card()] + [self.player_2.draw_a_card()]+ [self.player_1.draw_a_card()] + [self.player_2.draw_a_card()]
         p1 = self.player_1.draw_a_card()
         p2 = self.player_2.draw_a_card()
         if p1 > p2:
             self.player_1.receive_cards(tableau+[p1,p2])
         if p1 < p2:
             self.player_2.receive_cards(tableau+[p1,p2])
-        if p1 == p2:
+        if p1 == p2 and p1!=-1 and p2 != -1:
             self.war([p1,p2])
-        if self.player_1.lose_check():
-            self.winner = 2
         if self.player_2.lose_check():
             self.winner = 1
+        if self.player_1.lose_check():
+            self.winner = 2
 
     def game_not_over_check(self):
         if self.winner == -1:
             return True
-        else: 
+        else:
             return False
-            
+
             
 def play_a_game():
     cards = random.sample([i for i in range(12)]*4,13*2)
