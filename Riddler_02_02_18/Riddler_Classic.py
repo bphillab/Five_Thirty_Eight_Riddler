@@ -4,7 +4,7 @@ import copy
 import matplotlib.pylab as plt
 
 grasshopper_distance = 0.3
-filename = 'grasshopper'+str(int(grasshopper_distance*100))+'.jpg'
+filename = 'grasshopper'+str(int(grasshopper_distance*100))
 gif_flag = 0
 
 # -------------------------------------------------------------------------
@@ -120,3 +120,4 @@ while (counter==0 or (tries_in_a_row<3 and counter<3000)):
 plt.matshow(yard_matrix)
 plt.show()
 plt.savefig(filename)
+
