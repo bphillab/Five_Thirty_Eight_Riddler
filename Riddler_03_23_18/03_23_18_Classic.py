@@ -1,4 +1,15 @@
+"""
+
+Imagine taking a number and moving its last digit to the front. For example,
+1,234 would become 4,123. What is the smallest positive integer such that when
+you do this, the result is exactly double the original number? (For bonus points,
+solve this one without a computer.)
+
+"""
+
+
 import numpy as np
+
 
 def produce_next_digit(a, b):
     '''Function that produces the next digit for a transpose double'''
