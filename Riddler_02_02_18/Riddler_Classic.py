@@ -3,7 +3,7 @@ import numpy as np
 import copy
 import matplotlib.pylab as plt
 
-grasshopper_distance = 0.3
+grasshopper_distance = 1.0
 filename = 'grasshopper'+str(int(grasshopper_distance*100))
 gif_flag = 0
 
