@@ -104,9 +104,9 @@ def direct_calc():
     # Number of states is equal to the number of spots 2*num_spots
     # Number of fixed/optional states is num_spots
     # Number of free states is 7-fixed
-    total['second_try'] = total.apply(lambda x: calc_num_states(x), axis=1)
+    total['num_states'] = total.apply(lambda x: calc_num_states(x), axis=1)
     # return sum over all states
-    return total['second_try'].sum()
+    return total['num_states'].sum()
 
 
 if __name__ == '__main__':
