@@ -107,3 +107,13 @@ def direct_calc():
     total['second_try'] = total.apply(lambda x: calc_num_states(x), axis=1)
     # return sum over all states
     return total['second_try'].sum()
+
+
+if __name__ == '__main__':
+    x = direct_calc()
+    print("Number of states that are unplayable: ")
+    print(x)
+    print("Number of states: ")
+    print(binom(52, 8)*binom(44, 7))
+    print("Percent of unplayable games")
+    print(x/(binom(52, 8)*binom(44, 7)))
