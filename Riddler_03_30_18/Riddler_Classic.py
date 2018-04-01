@@ -1,6 +1,7 @@
 from scipy.special import binom
 import itertools
 import pandas as pd
+import numpy as np
 
 
 def calc_num_states(row):
@@ -101,11 +102,52 @@ def direct_calc():
     # Number of suit/color flips
     total['num_color_flips'] = total['num_spots'] * 2 - 7
 
-    # Calculate the number of states
+    # Calculate the number of states
     total['num_states'] = total.apply(lambda x: calc_num_states(x), axis=1)
 
     # return sum over all states
     return total['num_states'].sum()
+
+
+def generate_game_of_solitaire():
+    deck = [str(i[1]) + i[0] for i in itertools.product(['R', 'B','R','B'], [i for i in range(1, 14)])]
+    return np.random.choice(deck, 15, False)
+
+
+def get_opp_color(col):
+    if col == 'R':
+        return 'B'
+    if col == 'B':
+        return 'R'
+
+
+def check_cards(cards):
+    if '1R' in cards or '1B' in cards:
+        return True
+    tableau = cards[:7]
+    for i in tableau:
+        card_number = int(i[:-1])
+        card_color = i[-1]
+        opp_color = get_opp_color(card_color)
+        playable_card = str(card_number-1)+opp_color
+        if playable_card in cards:
+            return True
+    return False
+
+
+def big_mc(num_rounds = 10000000):
+    """
+    Try to solve the problem using monte carlo
+    :param num_rounds:
+    :return:
+    """
+    counter = 0
+    i = 0
+    while i < num_rounds:
+        cards = generate_game_of_solitaire()
+        counter = counter+int(check_cards(cards))
+        i = i + 1
+    return counter/num_rounds
 
 
 if __name__ == '__main__':
@@ -116,3 +158,5 @@ if __name__ == '__main__':
     print(binom(52, 8)*binom(44, 7))
     print("Percent of unplayable games")
     print(x/(binom(52, 8)*binom(44, 7)))
+    print("Monte Carlo estimate: ")
+    print(1-big_mc())
