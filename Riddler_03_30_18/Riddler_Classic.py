@@ -101,10 +101,9 @@ def direct_calc():
     # Number of suit/color flips
     total['num_color_flips'] = total['num_spots'] * 2 - 7
 
-    # Number of states is equal to the number of spots 2*num_spots
-    # Number of fixed/optional states is num_spots
-    # Number of free states is 7-fixed
+    # Calculate the number of states
     total['num_states'] = total.apply(lambda x: calc_num_states(x), axis=1)
+
     # return sum over all states
     return total['num_states'].sum()
 
