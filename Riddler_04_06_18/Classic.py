@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 games_data = pd.read_fwf('./game_comparison.txt', header=None)
 games_data.columns = [0,"Winner",2,"Loser",4,5,6,7]
