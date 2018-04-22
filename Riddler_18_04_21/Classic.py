@@ -4,6 +4,7 @@ import numpy as np
 def get_t(omega):
     return np.floor(np.random.uniform(1, omega+1, 1))[0]
 
+
 def simulate_cross(omega, num_times):
     """
     :param omega: Largest value for T
@@ -35,6 +36,7 @@ def simulate_cross(omega, num_times):
             times_dont_cross = times_dont_cross + [t2 + t5 + t4]
     return np.mean(times_cross), np.mean(times_dont_cross)
 
+
 if __name__ == '__main__':
     print('Starting at 1, trying until cross threshold:')
     i = 1
@@ -47,3 +49,6 @@ if __name__ == '__main__':
     print('Diagnostics: ')
     print(tempx)
     print(tempy)
+    print('Exact solution based on harmonic number gives:')
+    print('2.09069')
+    print('2.04534')
