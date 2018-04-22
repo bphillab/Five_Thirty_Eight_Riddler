@@ -2,7 +2,11 @@ import numpy as np
 
 
 def get_T(omega):
-    return np.random.uniform(1, omega, 1)
+    p = np.random.uniform(0, 1, 1)
+    normalizer = sum([1/i for i in range(1,omega+1)])
+    for i in range(1,omega+1):
+        if p >= sum([1/j for j in range(1,i)])/normalizer and p <sum([1/j for j in range(1,i+1)])/normalizer:
+            return i
 
 
 def simulate_cross(omega, num_times):
