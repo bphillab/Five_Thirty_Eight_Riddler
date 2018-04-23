@@ -21,7 +21,7 @@ def simulate_cross(omega, num_times):
         if np.ceil(np.random.uniform(0,t,1))[0] != 1:
             continue
 
-        vert_or_horiz = np.random.choice(range(2),1)[0]
+        vert_or_horiz = np.random.choice(range(2),1)[0]  # type: integer
         i = i + 1
         t1 = 0
         t2 = 1
