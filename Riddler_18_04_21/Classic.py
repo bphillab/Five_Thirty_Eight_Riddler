@@ -58,6 +58,3 @@ if __name__ == '__main__':
     print(tempx)
     print(tempy)
     print(percent_right)
-    print('Exact solution based on harmonic number gives:')
-    print('2.09069')
-    print('2.04534')
