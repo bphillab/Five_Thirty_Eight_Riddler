@@ -47,11 +47,8 @@ def simulate_cross(omega, num_times):
 
 if __name__ == '__main__':
     print('Starting at 1, trying until cross threshold:')
-    i = 1
+    i = 9
     tempx, tempy, percent_right = simulate_cross(i, 10000)
-    while tempx < tempy:
-        i = i+1
-        tempx, tempy, percent_right = simulate_cross(i, 10000)
 
     print('Crossed threshold at i = ', i)
     print('Diagnostics: ')

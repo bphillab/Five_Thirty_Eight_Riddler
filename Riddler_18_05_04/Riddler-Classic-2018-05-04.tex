@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{framed}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\geometry{letterpaper}  
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+                 % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\title{Riddler Classic Problem\\Week of May 4, 2018}
+\author{Benjamin Phillabaum\\Northbrook, IL}
+\begin{document}
+\maketitle
+\newpage
+
+\begin{framed}
+From Ricky Jacobson, a classic problem of pirates, monkeys and coconuts:
+
+Seven pirates wash ashore on a deserted island after their ship sinks. In order to survive, they gather as many coconuts as they can find and throw them into a central pile. As the sun sets, they all go to sleep.
+
+One pirate wakes up in the middle of the night. Being the greedy person he is, this pirate decides to take some coconuts from the pile and hide them for himself. As he approaches the pile, though, he notices a monkey watching him. To keep the monkey quiet, the pirate tosses it one coconut from the pile. He then divides the rest of the pile into seven equally sized bunches and hides one of the bunches in the bushes. Finally, he recombines the remaining coconuts into a single pile and goes back to sleep. (Note that individual coconuts are very hard, and therefore indivisible.)
+
+Later that night, a second pirate wakes up with the same idea. She tosses the monkey one coconut from the central pile, divides the pile into seven bunches, hides her bunch, recombines the rest, and goes back to sleep. After that, a third pirate wakes up and does the same thing. Then a fourth. Then a fifth, and so on until all seven pirates have hidden a share of the coconuts.
+
+In the morning, the pirates look at the remaining central pile and notice that it has gotten quite small. They decide to split the pile into seven equal bunches and take one bunch each. (Note: The monkey does not get one this time.)
+
+If there were N coconuts in the pile originally, what is the smallest possible value of N?
+
+\end{framed}
+I start by noting that this process is equivalent to finding an $N$ such that $-(3261642/5764801) + (279936 N)/5764801$ is an integer. This is equivalent to looking for solutions to $279936 N - 3261642 = 5764801 \lambda$. Noting that both $3261642$ and $279936$ are relatively prime to $5764801$ I can proceed by looking at modulo 5764801 to get:
+\begin{eqnarray}
+279936 N - 3261642 &\equiv& 0 \texttt{ (mod 5764801)}\\
+N &\equiv&  279936^{-1} \cdot 3261642  \texttt{ (mod 5764801)}\\
+N &\equiv&  3230324 \cdot 3261642  \texttt{ (mod 5764801)}\\
+N &\equiv&  3230324 \cdot 3261642  \texttt{ (mod 5764801)}\\
+N &\equiv&  823537  \texttt{ (mod 5764801)}\\
+\end{eqnarray}
+Thus $N=823537$ is the smallest solution. Further solutions will be in increments of 5764801.
+$\square$
+\end{document}
