@@ -20,3 +20,8 @@ def prob_reach_end(current, n):
 
 def calc_for_a_n(n):
     return sum([prob_reach_end(i,n) for i in range(1,n+1)])/n
+
+if __name__=='__main__':
+    print("For 10:", calc_for_a_n(9))
+    print("For 20:", calc_for_a_n(19))
+    print("For 100:", calc_for_a_n(99))
