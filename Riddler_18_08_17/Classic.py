@@ -61,10 +61,27 @@ def a_move(n,score_func = score_flat):
     scores.sort(key = lambda x:-x[3])
     return scores[0]
 
+def c_move_cont(a,b, delta, n,score_func = score_flat):
+    scores = [tuple([c/delta])+score_func(a,b,c/delta,n) for c in range(1,delta*n+1) if c not in [a*delta,b*delta]]
+    scores.sort(key = lambda x:-x[3])
+    return scores[0]
 
+
+def b_move_cont(a,delta,n,score_func = score_flat):
+    scores = [tuple([b/delta])+c_move_cont(a,b/delta,delta,n,score_func) for b in range(1,delta*n+1) if b != a*delta]
+    scores.sort(key = lambda x:-x[3])
+    return scores[0]
+
+
+def a_move_cont(n,delta,score_func = score_flat):
+    scores = [tuple([a/delta])+b_move_cont(a/delta,delta,n,score_func) for a in range(1,delta*n+1)]
+    scores.sort(key = lambda x:-x[3])
+    return scores[0]
 
 if __name__=='__main__':
     print("For on line, 10 spots: ")
     print(a_move(10))
     print("For on a clock: ")
     print(a_move(12, score_clock))
+    print("continuous, 10")
+    print(a_move_cont(10,4))
