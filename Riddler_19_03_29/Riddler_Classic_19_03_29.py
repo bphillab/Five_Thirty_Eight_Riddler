@@ -26,28 +26,28 @@ def simulate_bee(probas: list) -> float:
     contestants = deepcopy(probas)
     i = 0
     while len(contestants) > 1:
-        if contestants[i] < np.random.uniform(0,1):
+        if contestants[i] < np.random.uniform(0, 1):
             contestants.pop(i)
-        i = (i+1)%len(contestants)
+        i = (i + 1) % len(contestants)
     return contestants[0]
 
 
 def simulate_multiple_bees(num_bees, probas):
-    return np.unique([simulate_bee(probas) for _ in range(num_bees)],return_counts=True)
+    return np.unique([simulate_bee(probas) for _ in range(num_bees)], return_counts=True)
 
 
 def make_a_table(tallies):
     i = tallies[0]
     j = tallies[1]
     for k in range(len(i)):
-        print((i[k],j[k]/sum(j)))
-    return [(i[k],j[k]/sum(j)) for k in range(len(i))]
+        print((i[k], j[k] / sum(j)))
+    return [(i[k], j[k] / sum(j)) for k in range(len(i))]
 
 
 if __name__ == '__main__':
-    contestants = [i/100 for i in range(90,100)]
+    contestants = [i / 100 for i in range(90, 100)]
     print('Evaluating ascending with 100000 simulations: ')
-    make_a_table(simulate_multiple_bees(100000,contestants))
+    make_a_table(simulate_multiple_bees(100000, contestants))
     contestants.reverse()
     print('Evaluating descending with 100000 simulations: ')
-    make_a_table(simulate_multiple_bees(100000,contestants))
+    make_a_table(simulate_multiple_bees(100000, contestants))
