@@ -46,8 +46,8 @@ def make_a_table(tallies):
 
 if __name__ == '__main__':
     contestants = [i / 100 for i in range(90, 100)]
-    print('Evaluating ascending with 100000 simulations: ')
-    make_a_table(simulate_multiple_bees(100000, contestants))
+    print('Evaluating ascending with 1000000 simulations: ')
+    make_a_table(simulate_multiple_bees(1000000, contestants))
     contestants.reverse()
-    print('Evaluating descending with 100000 simulations: ')
-    make_a_table(simulate_multiple_bees(100000, contestants))
+    print('Evaluating descending with 1000000 simulations: ')
+    make_a_table(simulate_multiple_bees(1000000, contestants))
