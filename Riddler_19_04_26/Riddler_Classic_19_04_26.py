@@ -1,14 +1,14 @@
-# %%
 from numpy import random
 from random import shuffle
 
 
-# %%
 def player_sees(id, scen):
+    """Given a scenario, scen, what does player at id see?"""
     return str(scen[:id] + [0] + scen[id + 1:])
 
 
 def test_scen(scen, resp):
+    """For a given scenario and proposed response strategy how many matches are there?"""
     num_wins = 0
     for i in range(len(scen)):
         if resp[player_sees(i, scen)] == scen[i]:
@@ -17,6 +17,7 @@ def test_scen(scen, resp):
 
 
 def which_match(scen, resp):
+    """For a given scenario and response which match?"""
     matchers = []
     for i in range(len(scen)):
         if resp[player_sees(i, scen)] == scen[i]:
@@ -25,6 +26,7 @@ def which_match(scen, resp):
 
 
 def generate_all_scen():
+    """Generate all possible scenarios"""
     scens = []
     for i in range(4):
         for j in range(4):
@@ -35,6 +37,7 @@ def generate_all_scen():
 
 
 def generate_all_resp():
+    """Generate all possible responses"""
     resps = []
     for i in range(4):
         for j in range(4):
@@ -45,6 +48,7 @@ def generate_all_resp():
 
 
 def fill_in_remaining(resp):
+    """For a given set of responses fill in any missing with a random response"""
     responses = {}
     for i in range(4):
         for j in range(4):
@@ -58,6 +62,11 @@ def fill_in_remaining(resp):
 
 
 def determine_handled_cases(resp, num_match_needed):
+    """For a response strategy and number of matches needed to reach:
+       How many scenarios match?
+       How many scenarios don't match?
+       How many scenarios have duplicate matches beyond what is needed?
+    """
     all_scens = generate_all_scen()
     handled_cases = []
     remaining_cases = []
@@ -77,6 +86,11 @@ def determine_handled_cases(resp, num_match_needed):
 
 
 def extract_dupes(duped, resps, num_match_needed):
+    """Given the set of scenarios that have duplicate matches
+       and the response strategy, which responses correspond
+       to the duplicated scenarios? Randomly removing the first
+       num_match_needed
+    """
     resp_to_remove = []
     for i in duped:
         counter = 0
