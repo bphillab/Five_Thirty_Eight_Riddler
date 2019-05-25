@@ -32,7 +32,7 @@ def test_all_combinations(high, num, goal):
     return sols
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     max_found_by_hand = 24
     number_of_players = 11
     goal = 2
