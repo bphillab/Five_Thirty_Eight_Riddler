@@ -64,6 +64,11 @@ easier. We can look for symmetric situations where the "middle" outcomes make up
 astronauts our ansatz takes the form of having all of the inner coefficients up to a modulo 2 make up 2/3 and the rest 
 be the remaining 1/3. This works for N=4.
 
+ie 2(1-p)^3 p + 3p^2 (1-p)^2 + 2(1-p) p^3 = 1/3
+    p^4+(1-p)^4 = 1/3
+    
 For m astronauts we can get away with a similar ansatz up to modulo m-1. We then try to solve for p to make this 
 possible.
+
+
 """
