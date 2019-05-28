@@ -44,3 +44,4 @@ if __name__ == "__main__":
     if len(sols) > 1:
         sols.sort(key = lambda x: x[-1])
         print("Multiple solutions found, least worst player solution is: ", sols[0])
+
