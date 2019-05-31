@@ -23,11 +23,14 @@ Solvers Note: An exact solution to this problem can be derived from first princi
   1/Binom(n+m,n) + 1/Binom(n+m,m)
 
 3) The total probability is thus
-   (Binom(N,n) Binom(N-n,m)/(Binom(N,n) Binom(m)))*(1/Binom(n+m,n)+1/Binom(n+m,m))  
-"""
+   (Binom(N,n) Binom(N-n,m)/(Binom(N,n) Binom(N,m)))*(1/Binom(n+m,n)+1/Binom(n+m,m))
 
+4) For n=m this gives:
+  Binom(N,n) Binom(N-n,n) 2/(Binom(N,n)**2 Binom(2n,n)))
+"""
 from scipy.special import binom
 from random import uniform, sample
+
 
 
 def two_card_exact(n, m):
