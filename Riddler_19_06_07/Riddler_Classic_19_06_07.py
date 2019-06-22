@@ -44,34 +44,32 @@ use a Jeffery's Prior and average over the p?
 
 """
 from scipy.special import binom
-from math import sqrt
+
 
 def calc_states(min_obs, max_obs, num_tank, num_obs):
-    if num_tank > max_obs and num_tank > num_obs and max_obs-min_obs+1 > num_obs:
-        return binom(max_obs-min_obs-1,num_obs-2)/binom(num_tank,num_obs)
+    if num_tank >= max_obs and num_tank >= num_obs and max_obs-min_obs+1 >= num_obs:
+        return binom(max_obs-min_obs-1, num_obs-2)/binom(num_tank, num_obs)
     return 0
 
 
 def proposed_exact(min_obs, max_obs, tank_upper_bounds=None, max_num_obs=None):
     if tank_upper_bounds is None:
-        tank_upper_bounds = 4*max_obs
+        tank_upper_bounds = 3*max_obs
     if max_num_obs is None:
         max_num_obs = max_obs - min_obs + 1
-    norm = sum([calc_states(min_obs, max_obs, num_tank, num_obs) for num_tank in range(1,tank_upper_bounds+1)
-                                                                 for num_obs in range(1,max_num_obs+1)]
+    norm = sum([calc_states(min_obs, max_obs, num_tank, num_obs) for num_tank in range(max_obs, tank_upper_bounds+1)
+                                                                 for num_obs  in range(2, max_num_obs+1)]
                )
-    return [sum([calc_states(min_obs, max_obs, num_tank, num_obs)/norm for num_obs in range(1, max_num_obs+1)]
-               ) for num_tank in range(1, tank_upper_bounds+1)]
+    return sum([calc_states(min_obs, max_obs, num_tank, num_obs)*num_tank/norm for num_tank in range(max_obs, tank_upper_bounds+1)
+                                                                               for num_obs  in range(2, max_num_obs+1)]
+               )
 
 
 if __name__ == "__main__":
     problem_min = 22
     problem_max = 114
-    probas = proposed_exact(problem_min, problem_max)
-    mn = sum([(i+1)*probas[i] for i in range(len(probas))])
-    sq = sum([(i+1)*(i+1)*probas[i] for i in range(len(probas))])
+    mn = proposed_exact(problem_min, problem_max)
     print("Mean number of tanks: ", mn)
-    print("Standard Deviation number of tanks: ", sqrt(sq-mn**2))
 
 
 
