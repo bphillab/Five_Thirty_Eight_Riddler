@@ -105,7 +105,7 @@ def main():
     end_state = [(i.kick,i.block) for i in start_players]
     for i in range(6):
         for j in range(6):
-            print("(", i, ",", j, ",): ", end_state.count((i, j)))
+            print("(", i, ",", j, ˚",): ", end_state.count((i, j)))
 
 
 if __name__ == "__main__":
