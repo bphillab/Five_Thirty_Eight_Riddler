@@ -86,8 +86,8 @@ def mutate_players(players, num_to_mutate):
 
 def main():
     num_players = 100
-    num_to_mutate = 5
-    num_players_chosen = 30
+    num_to_mutate = 10
+    num_players_chosen = 50
     num_iters = 1000
     start_players = []
     for i in range(num_players):
