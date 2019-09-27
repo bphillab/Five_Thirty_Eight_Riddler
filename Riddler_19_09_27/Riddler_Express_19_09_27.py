@@ -14,10 +14,11 @@ it has won two of its last four games and four of its last eight games?
 
 '''
 Answer: The probability that you will have w wins and l losses is: Binomial(w+l,w)/2^{w+l}
+        Probability of 2 of last 4 and 4 of last 8 is basically two sets of 4 winning 2 of them.
 '''
 
 from scipy.special import binom
 
 if __name__ == "__main__":
-    for i in range(20):
-        print(2 * i, " ", binom(2 * i, i) / 4 ** i)
+    print(2 * 2, " ", binom(2 * 2, 2) / 4 ** 2)
+    print(4 * 2, " ", (binom(2 * 2, 2) / 4 ** 2) ** 2)
