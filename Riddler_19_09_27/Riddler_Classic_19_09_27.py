@@ -90,6 +90,5 @@ def main(num_trials):
     print('m wins: ', np.mean([i['m'] > i['t'] and i['m'] > i['d'] for i in trials]))
     print('d wins: ', np.mean([i['d'] > i['m'] and i['d'] > i['t'] for i in trials]))
 
-
 if __name__ == "__main__":
-    main(100)
+    main(10000)
