@@ -1,3 +1,4 @@
+import random
 def test_a_deck(deck):
     forward_deck = [i for i in range(13)]
     backward_deck = [12-i for i in range(13)]

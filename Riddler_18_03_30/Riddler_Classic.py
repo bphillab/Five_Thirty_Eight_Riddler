@@ -1,7 +1,8 @@
-from scipy.special import binom
 import itertools
-import pandas as pd
+
 import numpy as np
+import pandas as pd
+from scipy.special import binom
 
 
 def calc_num_states(row):

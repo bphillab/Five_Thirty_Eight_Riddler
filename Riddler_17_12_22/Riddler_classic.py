@@ -1,5 +1,4 @@
 import numpy.random as random
-import math
 
 
 def __initialize_game(num_players, num_dollars):

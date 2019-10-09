@@ -1,7 +1,8 @@
-from math import sqrt
-import numpy as np
 import copy
+from math import sqrt
+
 import matplotlib.pylab as plt
+import numpy as np
 
 grasshopper_distance = 1.0
 filename = 'grasshopper'+str(int(grasshopper_distance*100))

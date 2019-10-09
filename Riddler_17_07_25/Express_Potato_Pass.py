@@ -8,9 +8,10 @@ How do a child’s chances of winning change depending on where they are in the 
 """
 
 
-from numpy.random import uniform
 from math import floor
+
 import pandas as pd
+from numpy.random import uniform
 
 number_of_games = 10000
 number_of_players = 5
