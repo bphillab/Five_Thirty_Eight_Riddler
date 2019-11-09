@@ -24,10 +24,11 @@ Stars-and-bars has Binom(N+M,M) - Binom(min+M,min)
 from scipy.special import binom
 
 
-def stars_and_bars(num_candy, num_types, min_candy):
-    return int(binom(num_candy + num_types + 1 - 1, num_types) - binom(min_candy - 1 + num_types + 1 - 1, num_types))
+def stars_and_bars(max_num_candy, num_types, min_candy):
+    return int(
+        binom(max_num_candy + num_types + 1 - 1, num_types) - binom(min_candy - 1 + num_types + 1 - 1, num_types))
 
 
 if __name__ == '__main__':
-    print("Number of ways for 100 candies, 3 kinds of candies, minimum of one candy selected: ",
+    print("Number of ways for max of 100 candies, 3 kinds of candies, min of one candy selected: ",
           stars_and_bars(100, 3, 1))
