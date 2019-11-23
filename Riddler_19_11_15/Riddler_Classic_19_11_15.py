@@ -39,6 +39,6 @@ def exact_sol(base):
 
 if __name__ == "__main__":
     print("For a 10 sided_die the answer is: ", solve_for_a_base(10))
-    sim = [solve_for_a_base(b) for b in range(25, 30)]
+    sim = [solve_for_a_base(b) for b in range(10, 20)]
     print("Sols: ", sim)
-    print("Exac: ", [exact_sol(b) for b in range(25, 30)])
+    print("Exac: ", [exact_sol(b) for b in range(10, 20)])
