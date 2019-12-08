@@ -29,6 +29,15 @@ def strat(curr, thresh):
         return randint(0, 99)
 
 
+def strat2(curr, thresh):
+    if curr <= thresh:
+        return curr - 1
+    if 100 - curr <= thresh:
+        return (curr + 1) % 100
+    else:
+        return randint(0, 99)
+
+
 def play_a_round(thresh):
     curr = randint(0, 99)
     count = 1
@@ -38,12 +47,29 @@ def play_a_round(thresh):
     return count
 
 
+def play_a_round2(thresh):
+    curr = randint(0, 99)
+    count = 1
+    while curr > 0:
+        curr = strat2(curr, thresh)
+        count = count + 1
+    return count
+
+
 def collect_stats(num_games, thresh):
     return mean([play_a_round(thresh) for _ in range(num_games)])
 
 
+def collect_stats2(num_games, thresh):
+    return mean([play_a_round2(thresh) for _ in range(num_games)])
+
+
 def exact_calc(thresh):
     return thresh / 2 + 100 / (thresh + 1)
+
+
+def exact_calc2(thresh):
+    return thresh * (thresh + 1) / (2 * thresh + 1) + 100 / (2 * thresh + 1)
 
 
 if __name__ == '__main__':
@@ -54,3 +80,10 @@ if __name__ == '__main__':
     for i in rand_selected:
         print("Testing ", i, " percent error:", (x[i] - y[i]) / x[i])
     print("Based on exact calc: ", y[10:20])
+    rand_selected = [randint(0, 49) for _ in range(10)]
+    x = [collect_stats2(10000, i) for i in range(50)]
+    y = [exact_calc2(i) for i in range(50)]
+    print("Checking a few examples to establish credible: ")
+    for i in rand_selected:
+        print("Testing ", i, " percent error:", (x[i] - y[i]) / x[i])
+    print("Based on exact calc: ", y[5:15])
