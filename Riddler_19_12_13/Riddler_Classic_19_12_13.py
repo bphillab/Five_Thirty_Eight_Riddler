@@ -19,7 +19,7 @@ To get you started, Steve notes that 6 by 6 by 6 is one such solution. How many 
 Given the problem we are looking for an a,b,c such that: 1/a + 1/b + 1/c = 1/2
 """
 
-from math import floor
+from math import floor, ceil
 
 if __name__ == '__main__':
     d = 3
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     counter = 0
 
     for i in range(3, 2 * d + 1):
-        for j in range(floor(1 / (1 / 2 - 1 / i)) - 1, upper):
+        for j in range(floor(1 / (1 / 2 - 1 / i)) - 1, ceil(2 / (1 / 2 - 1 / i)) + 1):
             if 1 / i + 1 / j == 1 / 2:
                 continue
             k = 1 / (1 / 2 - 1 / i - 1 / j)
