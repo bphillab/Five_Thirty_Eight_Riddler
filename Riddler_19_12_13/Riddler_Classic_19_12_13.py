@@ -22,18 +22,31 @@ Given the problem we are looking for an a,b,c such that: 1/a + 1/b + 1/c = 1/2
 from math import floor, ceil
 
 if __name__ == '__main__':
-    d = 3
-    upper = 50
-    tol = 0.00000001
+    d = 5
+    tol = 9e-7
 
     counter = 0
+    counted_steps = 0
+    max_tol = 0
 
     for i in range(3, 2 * d + 1):
-        for j in range(floor(1 / (1 / 2 - 1 / i)) - 1, ceil(2 / (1 / 2 - 1 / i)) + 1):
-            if 1 / i + 1 / j == 1 / 2:
+        for j in range(max([i, floor(1 / (1 / 2 - 1 / i)) + 1]), ceil((d - 1) / (1 / 2 - 1 / i)) + 1):
+            if abs(1 / i + 1 / j - 1 / 2) < tol:
                 continue
-            k = 1 / (1 / 2 - 1 / i - 1 / j)
-            if abs(k - round(k)) < tol and round(k) >= i and round(k) >= j >= i:
-                counter = counter + 1
-                print("Found one: ", i, " ", j, " ", round(k))
+            for k in range(max([j, floor(1 / (1 / 2 - 1 / i - 1 / j)) + 1]),
+                           ceil((d - 2) / (1 / 2 - 1 / i - 1 / j)) + 1):
+                if abs(1 / i + 1 / j + 1 / k - 1 / 2) < tol:
+                    continue
+                for l in range(max([k, floor(1 / (1 / 2 - 1 / i - 1 / j - 1 / k)) + 1]),
+                               ceil((d - 3) / (1 / 2 - 1 / i - 1 / j - 1 / k)) + 1):
+                    if abs(1 / i + 1 / j + 1 / k + 1 / l - 1 / 2) < tol:
+                        continue
+                    a = 1 / (1 / 2 - 1 / i - 1 / j - 1 / k - 1 / l)
+
+                    if abs(a - round(a)) < tol and a >= l >= k >= j >= i:
+                        if max_tol < abs(a - round(a)):
+                            max_tol = abs(a - round(a))
+                        print(abs(a - round(a)), " ", i, " ", j, " ", " ", k, " ", l, " ", a, )
+                        counter = counter + 1
     print("Total found: ", counter)
+    print(max_tol)
