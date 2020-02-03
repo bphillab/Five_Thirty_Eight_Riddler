@@ -30,10 +30,15 @@ Options: Calculus: Take a derivative set to zero solve... This looks annoying
 from math import tan, pi, sqrt
 
 
-def volume(a, n, theta=75 * pi / 180):
+def internal_angle(n):
+    return (n - 2) * pi / (2 * n)
+
+
+def volume(a, n, theta=45 * pi / 180):
     return (a ** 3 / 24) * (n / tan(pi / n) ** 2) * (sqrt(tan(pi / n) ** 2 * tan(theta) ** 2 - 1))
 
 
 if __name__ == "__main__":
-    for i in range(2, 13):
-        print(i, " ", volume(1, i))
+    for N in range(5, 20):
+        for i in range(2, N):
+            print(N, ", ", i, ": ", volume(1, i, internal_angle(N)))
