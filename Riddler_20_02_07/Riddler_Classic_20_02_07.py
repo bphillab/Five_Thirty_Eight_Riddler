@@ -31,8 +31,8 @@ def create_exec_str(arr, prev_str='', depth=0):
         return create_exec_str(arr[1:], prev_str + '*abs(-' + str(arr[0]), depth + 1)
     if depth > len(arr):
         return create_exec_str(arr[1:], prev_str + ') -' + str(arr[0]), depth - 1)
-    return "{0}{1}".format(create_exec_str(arr[1:], prev_str + '*abs(-' + str(arr[0]), depth + 1),
-                           create_exec_str(arr[1:], prev_str + ') -' + str(arr[0]), depth - 1))
+    return create_exec_str(arr[1:], prev_str + '*abs(-' + str(arr[0]), depth + 1) + \
+           create_exec_str(arr[1:], prev_str + ') -' + str(arr[0]), depth - 1)
 
 
 def unique_values(num_val):
