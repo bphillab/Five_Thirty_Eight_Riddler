@@ -31,19 +31,19 @@ def create_exec_str(arr, prev_str='', depth=0):
         return create_exec_str(arr[1:], prev_str + '*abs(-' + str(arr[0]), depth + 1)
     if depth > len(arr):
         return create_exec_str(arr[1:], prev_str + ') -' + str(arr[0]), depth - 1)
-    return create_exec_str(arr[1:], prev_str + '*abs(-' + str(arr[0]), depth + 1) + \
-           create_exec_str(arr[1:], prev_str + ') -' + str(arr[0]), depth - 1)
+    return "{0}{1}".format(create_exec_str(arr[1:], prev_str + '*abs(-' + str(arr[0]), depth + 1),
+                           create_exec_str(arr[1:], prev_str + ') -' + str(arr[0]), depth - 1))
 
 
 def unique_values(num_val):
     to_eval = create_exec_str(list(range(1, num_val + 1)))
-    return np.unique([eval(i) for i in to_eval]).size
+    return np.unique([eval(elem) for elem in to_eval]).size
 
 
 if __name__ == '__main__':
     print("Number of unique for each number of integers: ")
     tracker = []
-    for i in range(1, 39, 2):
+    for i in range(1, 51, 2):
         temp = unique_values(i)
         tracker = tracker + [temp]
         print(i, ": ", temp)
