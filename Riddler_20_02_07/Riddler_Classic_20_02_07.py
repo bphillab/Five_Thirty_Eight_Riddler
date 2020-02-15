@@ -37,13 +37,13 @@ def create_exec_str(arr, prev_str='', depth=0):
 
 def unique_values(num_val):
     to_eval = create_exec_str(list(range(1, num_val + 1)))
-    return np.unique([eval(elem) for elem in to_eval]).size
+    return len(to_eval), np.unique([eval(elem) for elem in to_eval]).size
 
 
 if __name__ == '__main__':
     print("Number of unique for each number of integers: ")
     tracker = []
-    for i in range(1, 51, 2):
+    for i in range(1, 39, 2):
         temp = unique_values(i)
         tracker = tracker + [temp]
-        print(i, ": ", temp)
+        print(i, ": ", temp[0], ": ", temp[1])
