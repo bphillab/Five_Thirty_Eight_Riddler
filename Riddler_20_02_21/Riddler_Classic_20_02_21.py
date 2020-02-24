@@ -17,7 +17,11 @@ probability p and you optimize your strategy, what percentage of games will you 
 
 
 """
+import sys
 from functools import lru_cache
+
+x = 2000
+sys.setrecursionlimit(x)
 
 
 @lru_cache(maxsize=40000)
@@ -33,4 +37,7 @@ def opt_strat(current_score, coins_remaining, p1=0.5, p2=0.5):
 
 
 if __name__ == "__main__":
-    print(opt_strat(0, 100))
+    for i in range(-49, 50):
+        print("For p=", 0.5 + i / 100, " probability of winning with optimal strategy: ",
+              opt_strat(0, 100, 0.5 + i / 100),
+              ", ")
