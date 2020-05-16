@@ -39,9 +39,9 @@ def main(num_sides=20):
     adv_dis = dumb_way_advantage(dis)
     dis_adv = dumb_way_disadvantage(adv)
     print('Determining expected_values: ')
-    print('Roll one die: ', '%0.4f' % np.mean([base[i] * (i + 1) for i in range(num_sides)]))
-    print('Advantage of disadvantage: ', '%0.4f' % np.mean([adv_dis[i] * (i + 1) for i in range(num_sides)]))
-    print('Disadvantage of advantage: ', '%0.4f' % np.mean([dis_adv[i] * (i + 1) for i in range(num_sides)]))
+    print('Roll one die: ', '%0.4f' % np.sum([base[i] * (i + 1) for i in range(num_sides)]))
+    print('Advantage of disadvantage: ', '%0.4f' % np.sum([adv_dis[i] * (i + 1) for i in range(num_sides)]))
+    print('Disadvantage of advantage: ', '%0.4f' % np.sum([dis_adv[i] * (i + 1) for i in range(num_sides)]))
     print('EC: ')
     print("To Beat \t 1 die \t Adv of dis \t Dis of adv")
     for i in range(20):
