@@ -91,6 +91,11 @@ def main():
     print('Detecting state with most mackerels: ')
     most_mack, num = detect_state_with_most(state_macks)
 
+    print('States: ')
+    counts = np.unique(state_macks, return_counts=True)
+    for i in range(len(counts[0])):
+        print(counts[0][i], ": ", counts[1][i])
+
     print('Longest Mackerels: ')
     for i in longest_mackerels:
         print(i)
@@ -101,6 +106,7 @@ def main():
 
     print('Length of longest Mackerel: ', len(longest_mackerels[0]))
     print('Most Mackerels in a state: ', num)
+
     return
 
 
