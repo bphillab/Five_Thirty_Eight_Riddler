@@ -30,3 +30,13 @@ def check_if_valid(arr, n):
 
 def create_list_of_perms(n):
     return sum([[i for i in permutations(range(n), j + 1)] for j in range(n)], [])
+
+
+def main(n=5):
+    arr = create_list_of_perms(n)
+    x = [i for i in arr if check_if_valid(i, n)]
+    print(x, "\n", len(x))
+
+
+if __name__ == "__main__":
+    main()
