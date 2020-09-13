@@ -56,8 +56,9 @@ def find_sum_exp(sm, num_days, max_len):
 
 
 def main(sm, exp, max_len):
-    print(find_weighted_sum(find_sum_exp(sm, exp, max_len)))
+    print(exp, ": ", find_weighted_sum(find_sum_exp(sm, exp, max_len)))
 
 
 if __name__ == '__main__':
-    main(2, 4, 100)
+    for i in range(2, 20):
+        main(2, i, 1000)
