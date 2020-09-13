@@ -16,4 +16,3 @@ def run_several_nights(num_players, num_nights):
 
 if __name__ == '__main__':
     print(np.mean([run_several_nights(5, 10000) for _ in range(100)]))
-
