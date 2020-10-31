@@ -14,6 +14,8 @@ What’s the area of the region outside of the building she can reach while hold
 '''
 Answer:
 Include/Exclude Approach:
-Note that we want to include the 4 semi-circles with radius 100 ft
-Exclude one copy of the double counted intersections
+Include 4 circles centered at (50,0)(0,50)(0,-50)(-50,0):4 pi (100)^2
+Exclude the overlap of those circles to get area covered: 4[2 100^2 (pi/4-1/2)] = 4 pi 100^2/2 -4 100^2
+Exclude the building itself: 100^2
+4 pi 100^2 - 4 pi 100^2/2+4 100^2 - 100^2=4 pi 100^2/2 + 3 100^2
 '''
