@@ -2,7 +2,7 @@ import numpy as np
 
 
 def grid_number_to_array(num):
-    return [(num // 2 ** i) % 2 for i in range(12)]
+    return [(num // 2 ** _) % 2 for _ in range(12)]
 
 
 def translate_arr_to_dict(arr):
@@ -62,9 +62,9 @@ def is_solvable(num):
     connections = translate_arr_to_dict(grid_number_to_array(num))
     old = []
     visited = connections.get(0, [])
-    while (old != visited and 8 not in visited):
+    while old != visited and 8 not in visited:
         old = visited
-        visited = np.unique(visited + sum([connections.get(i, []) for i in visited], [])).tolist()
+        visited = np.unique(visited + sum([connections.get(_, []) for _ in visited], [])).tolist()
     return 8 in visited
 
 
