@@ -19,3 +19,16 @@ are in the lead. What is the probability that you’ll win gold in snowboarding?
 
 For this problem the distribution isn't necessary, but the EC does require some work.
 """
+import numpy as np
+
+
+def simulate_a_round(n):
+    first_round = np.random.standard_normal(n)
+    second_round = np.random.standard_normal(n)
+    return np.argmin(first_round) == np.argmin(first_round + second_round)
+
+
+def get_rank_stats(n):
+    round = np.random.standard_normal(n)
+    minner = np.argmin(round)
+    return round[minner] - np.mean(np.append(round[:minner], round[(minner + 1):]))
