@@ -14,7 +14,7 @@ def drdt(r, theta, v, h):
 
 
 h = 100
-dt = 0.01
+dt = 0.0001
 v = 1
 
 theta = pi / 4
